@@ -2,9 +2,11 @@ import { create } from "zustand"
 import { toast } from "react-toastify"
 import axios from "axios"
 
-const AUTH_API_URL = `http://localhost:8000/api/user`
-const PRODUCT_API_URL = `http://localhost:8000/api/product`
-const PAYMENT_API_URL = `http://localhost:8000/api/payment`
+
+const backendUrl = import.meta.env.VITE_BACKEND_URL
+const AUTH_API_URL = `${backendUrl}/api/user`
+const PRODUCT_API_URL = `${backendUrl}/api/product`
+const PAYMENT_API_URL = `${backendUrl}/api/payment`
 axios.defaults.withCredentials = true
 
 const useShopStore = create((set, get) => ({
@@ -26,7 +28,7 @@ const useShopStore = create((set, get) => ({
     isLoading: false,
     isCheckingAuth: true,
     userListings: [],
-    listingsLoaded: false, 
+    listingsLoaded: false,
     showRedDot: false,
     setShowRedDot: (value) => set({ showRedDot: value }),
     setVisible: () => {
@@ -93,7 +95,7 @@ const useShopStore = create((set, get) => ({
                 user: res.data.user,
                 isAuthenticated: true,
                 isLoading: false,
-                listingsLoaded: false 
+                listingsLoaded: false
             })
             return res.data
         } catch (error) {
@@ -160,7 +162,7 @@ const useShopStore = create((set, get) => ({
             set({
                 productData: res.data.productData,
                 isLoading: false,
-                listingsLoaded: false 
+                listingsLoaded: false
             })
             return res.data
         } catch (error) {
@@ -239,7 +241,7 @@ const useShopStore = create((set, get) => ({
             const updatedListings = currentListings.filter(listing => listing._id !== productId)
             set({
                 userListings: updatedListings,
-                listingsLoaded: true 
+                listingsLoaded: true
             })
 
             return res.data
