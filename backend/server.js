@@ -22,6 +22,9 @@ app.use("/api/admin", adminRoutes)
 app.use("/api/payment", paymentRoutes)
 
 
+app.get("/", (req, res) => {
+  res.send("API is running...");
+});
 
 
 const startServer = async () => {
