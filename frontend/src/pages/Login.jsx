@@ -58,10 +58,9 @@ const Login = () => {
 
       if (showLoginModal) {
         setShowLoginModal(false)
-        setShowContactModal(true)
-        // setTimeout(() => {
-        //   setShowContactModal(true)
-        // }, 200)
+        setTimeout(() => {
+          setShowContactModal(true)
+        }, 200)
       }
       if (showLoginModal2) {
         setShowLoginModal2(false)
