@@ -10,6 +10,7 @@ const razorpayInstance = new Razorpay({
 
 const createRazorpayOrder = async (req, res) => {
     try {
+        console.log("Creating order for amount:", req.body.amount) // ADD THIS
         const { amount } = req.body
         const options = {
             amount: amount * 100,
@@ -17,6 +18,7 @@ const createRazorpayOrder = async (req, res) => {
             receipt: `order_${Date.now()}`
         }
         const order = await razorpayInstance.orders.create(options)
+        console.log("Order created successfully:", order.id) // ADD THIS
         res.json({
             success: true,
             orderId: order.id,
@@ -24,6 +26,7 @@ const createRazorpayOrder = async (req, res) => {
             keyId: process.env.RAZORPAY_KEY_ID,
         })
     } catch (error) {
+        console.error("❌ ORDER CREATION ERROR:", error) // ADD THIS
         res.status(500).json({
             success: false,
             message: 'Order creation failed'

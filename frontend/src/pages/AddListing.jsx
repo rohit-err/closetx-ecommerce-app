@@ -184,7 +184,7 @@ const AddListing = () => {
             }
           },
           prefill: {
-            name: user.name,
+            name: user?.name,
             email: formData.contactInfo.email,
             contact: formData.contactInfo.phone
           },
