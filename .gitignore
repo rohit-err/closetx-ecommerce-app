@@ -1,3 +1,29 @@
-node_modules
+# Dependencies
+node_modules/
+*/node_modules/
 
-*.env
+# Environment variables
+.env
+*/.env
+.env.local
+.env.production
+
+# Build outputs
+*/dist/
+*/build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Temporary folders
+tmp/
+temp/
