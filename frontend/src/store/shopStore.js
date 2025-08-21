@@ -1,9 +1,11 @@
 import { create } from "zustand"
 import { toast } from "react-toastify"
 import axios from "axios"
-import { AUTH_API_URL, PRODUCT_API_URL, PAYMENT_API_URL } from '../config/api'
 
 
+const AUTH_API_URL = `http://localhost:8000/api/user`
+const PRODUCT_API_URL = `http://localhost:8000/api/product`
+const PAYMENT_API_URL = `http://localhost:8000/api/payment`
 axios.defaults.withCredentials = true
 const useShopStore = create((set, get) => ({
     currency: "₹",
