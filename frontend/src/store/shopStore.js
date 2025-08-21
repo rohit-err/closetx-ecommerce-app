@@ -61,22 +61,83 @@ const useShopStore = create((set, get) => ({
         }
     },
 
+    // Frontend useShopStore.js - Updated checkAuth method
     checkAuth: async () => {
         set({ isCheckingAuth: true, error: null })
+
         try {
-            const res = await axios.get(`${AUTH_API_URL}/check-auth`)
+            console.log('🔍 Checking authentication...');
+            console.log('🌐 API URL:', AUTH_API_URL);
+
+            const res = await axios.get(`${AUTH_API_URL}/check-auth`, {
+                withCredentials: true,
+                timeout: 10000
+            });
+
+            console.log('✅ Auth check successful:', res.data);
+
             set({
                 user: res.data.user,
                 isAuthenticated: true,
                 isCheckingAuth: false
             })
         } catch (error) {
+            console.error('❌ Auth check failed:', {
+                status: error.response?.status,
+                statusText: error.response?.statusText,
+                message: error.response?.data?.message || error.message,
+                url: error.config?.url
+            });
+
             set({
                 error: null,
                 isCheckingAuth: false,
                 isAuthenticated: false,
                 user: null
             })
+        }
+    },
+
+    // Updated userSignIn with debugging
+    userSignIn: async (email, password) => {
+        set({ isLoading: true, error: null })
+
+        try {
+            console.log('🚀 Attempting login...');
+            console.log('📧 Email:', email);
+            console.log('🌐 Login URL:', `${AUTH_API_URL}/login`);
+
+            const res = await axios.post(`${AUTH_API_URL}/login`, {
+                email,
+                password
+            }, {
+                withCredentials: true,
+                timeout: 10000
+            });
+
+            console.log('✅ Login successful:', res.data);
+            console.log('🍪 Response headers:', res.headers);
+
+            set({
+                user: res.data.user,
+                isAuthenticated: true,
+                isLoading: false,
+                listingsLoaded: false
+            })
+            return res.data
+        } catch (error) {
+            console.error('❌ Login failed:', {
+                status: error.response?.status,
+                statusText: error.response?.statusText,
+                message: error.response?.data?.message || error.message,
+                headers: error.response?.headers
+            });
+
+            set({
+                error: error.response?.data?.message || "Error signing in user",
+                isLoading: false
+            })
+            throw error
         }
     },
 
