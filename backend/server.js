@@ -14,7 +14,12 @@ const app = express()
 const port = process.env.PORT
 
 app.use(cors({
-    origin: ["http://localhost:5174", "http://localhost:5173"],
+    origin: [
+        "http://localhost:5174",
+        "http://localhost:5173",
+        "https://your-frontend-app.vercel.app",
+        "https://your-admin-app.vercel.app"
+    ],
     credentials: true
 }))
 app.use(express.json())

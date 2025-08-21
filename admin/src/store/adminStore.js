@@ -3,8 +3,8 @@ import { create } from "zustand"
 import axios from "axios"
 
 
-const ADMIN_API_URL = `http://localhost:8000/api/admin`
-const PRODUCT_API_URL = `http://localhost:8000/api/product`
+const ADMIN_API_URL = `https://closetx-backend.onrender.com/api/admin`
+const PRODUCT_API_URL = `https://closetx-backend.onrender.com/api/product`
 
 axios.defaults.withCredentials = true
 

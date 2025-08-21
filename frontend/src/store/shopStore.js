@@ -3,9 +3,9 @@ import { toast } from "react-toastify"
 import axios from "axios"
 
 
-const AUTH_API_URL = `http://localhost:8000/api/user`
-const PRODUCT_API_URL = `http://localhost:8000/api/product`
-const PAYMENT_API_URL = `http://localhost:8000/api/payment`
+const AUTH_API_URL = `https://closetx-backend.onrender.com/api/user`
+const PRODUCT_API_URL = `https://closetx-backend.onrender.com/api/product`
+const PAYMENT_API_URL = `https://closetx-backend.onrender.com/api/payment`
 axios.defaults.withCredentials = true
 const useShopStore = create((set, get) => ({
     currency: "₹",
