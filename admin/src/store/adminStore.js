@@ -1,10 +1,8 @@
 
 import { create } from "zustand"
 import axios from "axios"
+import { ADMIN_API_URL, PRODUCT_API_URL } from '../config/api'
 
-
-const ADMIN_API_URL = `http://localhost:8000/api/admin`
-const PRODUCT_API_URL = `http://localhost:8000/api/product`
 
 axios.defaults.withCredentials = true
 
