@@ -7,7 +7,7 @@ const verifyToken = require("../middleware/verifyToken")
 const authRoutes = express.Router()
 
 
-authRoutes.get("/:id", verifyToken, getProfile)
+
 authRoutes.post("/signup", signUp)
 authRoutes.post("/login", login)
 authRoutes.post("/logout", logout)
