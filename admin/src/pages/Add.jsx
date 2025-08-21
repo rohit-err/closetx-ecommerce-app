@@ -293,7 +293,7 @@ const Add = () => {
             {isLoading ? (
               <Loader className="animate-spin text-white" size={18} />
             ) : (
-              "PAY & ADD"
+              "ADD"
             )}
           </button>
         </div>

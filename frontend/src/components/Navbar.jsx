@@ -23,7 +23,7 @@ const Navbar = () => {
     }
     else {
       navigate("/interest")
-      if(showRedDot) setShowRedDot(false)
+      if (showRedDot) setShowRedDot(false)
     }
 
   }
@@ -48,20 +48,30 @@ const Navbar = () => {
           <p>CONTACT</p>
           <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
         </NavLink>
+        <a href="https://closetx-admin.vercel.app/" target="_blank" className="border px-5 text-xs py-1 rounded-full -mt-2"><p className="mt-1">Admin Panel</p></a>
       </ul>
 
       <div className="flex items-center gap-6">
         <img onClick={() => { handleClick() }} src={assets.search_icon} alt="" className="w-5 cursor-pointer" />
         <div className="group relative">
-          <Link to='/login'><img src={assets.profile_icon} alt="" className="w-5 cursor-pointer" /></Link>
-          {isAuthenticated && <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
-            <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded">
-              <Link to='/my-profile' className="cursor-pointer hover:text-black">My Profile</Link>
-              <Link to='/my-listings' className="cursor-pointer hover:text-black">My Listings</Link>
-              <Link onClick={() => { logout() }} className="cursor-pointer hover:text-black">Logout</Link>
-            </div>
-          </div>}
+          {isAuthenticated ? (
+            <>
+              <img src={assets.profile_icon} alt="Profile" className="w-5 cursor-pointer" />
+              <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
+                <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded">
+                  <Link to='/my-profile' className="cursor-pointer hover:text-black">My Profile</Link>
+                  <Link to='/my-listings' className="cursor-pointer hover:text-black">My Listings</Link>
+                  <Link onClick={logout} className="cursor-pointer hover:text-black">Logout</Link>
+                </div>
+              </div>
+            </>
+          ) : (
+            <Link to='/login'>
+              <img src={assets.profile_icon} alt="Login" className="w-5 cursor-pointer" />
+            </Link>
+          )}
         </div>
+
         <div onClick={() => { handleWishClick() }} className='relative cursor-pointer'>
           <div className="relative inline-block" title="Interested Items">
             <Heart

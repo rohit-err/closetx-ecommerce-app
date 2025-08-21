@@ -1,9 +1,10 @@
 
+
 const GitHubFloatButton = () => {
   return (
     <div className="fixed bottom-4 right-4 z-50 group">
       <a
-        href="https://github.com/rohit-err"
+        href="https://github.com/rohit-err/closetx-ecommerce-app"
         target="_blank"
         rel="noopener noreferrer"
         className="w-14 h-14 bg-black rounded-full flex items-center justify-center shadow-lg
@@ -23,11 +24,11 @@ const GitHubFloatButton = () => {
                    bg-black text-white text-sm px-3 py-1 rounded-md opacity-0 
                    group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap shadow-md"
       >
-        🚀 Explore My GitHub
+        ⭐ View Repository
       </span>
     </div>
   );
-};
+}; 
 
 export default GitHubFloatButton;
 
