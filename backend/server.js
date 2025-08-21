@@ -13,7 +13,7 @@ const paymentRoutes = require('./routes/paymentRoutes');
 const app = express()
 const port = process.env.PORT
 
-app.use(cors({ origin: ["http://localhost:5174", "http://localhost:5173","https://closetx-frontend.vercel.app"], credentials: true }))
+app.use(cors({ origin: ["http://localhost:5174", "http://localhost:5173"], credentials: true }))
 app.use(express.json())
 app.use(cookieParser())
 app.use("/api/user", authRoutes)
@@ -22,9 +22,6 @@ app.use("/api/admin", adminRoutes)
 app.use("/api/payment", paymentRoutes)
 
 
-app.get("/", (req, res) => {
-  res.send("API is running...");
-});
 
 
 const startServer = async () => {
