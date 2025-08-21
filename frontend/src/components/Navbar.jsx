@@ -97,6 +97,7 @@ const Navbar = () => {
           <NavLink onClick={setVisible} className="py-2 pl-6 border" to="/collection">COLLECTION</NavLink>
           <NavLink onClick={setVisible} className="py-2 pl-6 border" to="/about">ABOUT</NavLink>
           <NavLink onClick={setVisible} className="py-2 pl-6 border" to="/contact">CONTACT</NavLink>
+          <a href="https://closetx-admin.vercel.app/" target="_blank" className="py-2 pl-6 border">ADMIN PANEL</a>
         </div>
       </div>
     </div>
