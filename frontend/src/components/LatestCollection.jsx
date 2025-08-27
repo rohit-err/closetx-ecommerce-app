@@ -17,7 +17,7 @@ const LatestCollection = () => {
             const sorted = [...products].sort(
                 (a, b) => new Date(b.listedAt) - new Date(a.listedAt)
             );
-            setLatestProducts(sorted.slice(0, 10)); 
+            setLatestProducts(sorted.slice(0, 10));
         }
 
     }, [products])
@@ -32,7 +32,14 @@ const LatestCollection = () => {
                 </p>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6">
-                {latestProducts.map((product) => {
+                {latestProducts.filter(product => {
+                    if (product.status === "available") return true
+                    if (product.status === "sold" && product.soldAt) {
+                        const daysSold = (new Date() - new Date(product.soldAt)) / (1000 * 60 * 60 * 24);
+                        return daysSold <= 3
+                    }
+                    return false
+                }).map((product) => {
                     return <ProductItem
                         key={product._id}
                         id={product._id}

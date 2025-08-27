@@ -26,7 +26,14 @@ const RelatedProducts = ({ category, subCategory }) => {
                 <Title text1={'RELATED'} text2={'PRODUCTS'} />
             </div>
             <div className="grid grid-cols-2  sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6 ">
-                {related.map((item, index) => (
+                {related.filter(item => {
+                    if (item.status === "available") return true
+                    if (item.status === "sold" && item.soldAt) {
+                        const daysSold = (new Date() - new Date(item.soldAt)) / (1000 * 60 * 60 * 24);
+                        return daysSold <= 3
+                    }
+                    return false
+                }).map((item, index) => (
                     <ProductItem key={item._id}
                         id={item._id}
                         name={item.name}
@@ -34,10 +41,10 @@ const RelatedProducts = ({ category, subCategory }) => {
                         img={item.images}
                         condition={item.condition}
                         size={item.size}
-                        brand={item.brand}       
+                        brand={item.brand}
                         status={item.status}
                         listedAt={item.listedAt}
-                        sellerName={item.userId.name} 
+                        sellerName={item.userId.name}
                         userId={item.userId} />
                 ))}
             </div>
