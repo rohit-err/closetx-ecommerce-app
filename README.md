@@ -46,13 +46,10 @@ It comes with a **user app** and a **separate admin dashboard** to manage listin
 ---
 
 ## 📷 Screenshots
-_Add your screenshots here after running the app._
 
-```md
 <img width="1906" height="862" alt="Screenshot 2025-09-05 175518" src="https://github.com/user-attachments/assets/10ca6403-8e4b-4ee5-9724-6f018e732e97" />
 <img width="1893" height="863" alt="Screenshot 2025-09-05 175643" src="https://github.com/user-attachments/assets/50ed60c4-d3b1-4407-8cb6-403d8928e3dc" />
 <img width="1903" height="866" alt="Screenshot 2025-09-05 175733" src="https://github.com/user-attachments/assets/c13d0229-9caf-4640-9560-f48e392fda38" />
-```
 
 ---
 
